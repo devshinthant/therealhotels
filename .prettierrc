@@ -13,7 +13,10 @@
     "^vite$",
     "^react-router-dom$",
     "<THIRD_PARTY_MODULES>",
-    "^@/components/(.*)$",
+    "^@/sections/(.*)$",
+    "^@/lib/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/store/(.*)$",
     "^[./]",
     "^[../]"
   ],

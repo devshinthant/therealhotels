@@ -3,6 +3,7 @@
 
 # Except these files & folders
 !/src
+/src/assets
 !index.html
 !package.json
 !tsconfig.json

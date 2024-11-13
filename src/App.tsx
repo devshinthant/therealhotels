@@ -1,7 +1,16 @@
+import useMountLenis from "./hooks/useMountLenis"
+import Navbar from "./layout/Navbar"
+import HeroSection from "./sections/HeroSection"
+
 function App() {
+  useMountLenis()
+
   return (
     <>
-      <div className="h-screen w-screen bg-red-300">Hello World</div>
+      <div className="relative h-auto w-screen bg-black">
+        <Navbar />
+        <HeroSection />
+      </div>
     </>
   )
 }

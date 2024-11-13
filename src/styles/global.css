@@ -9,8 +9,89 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Css Vars */
+  --navbar-height: 78px;
+  --navbar-padding-x: 48px;
 }
 
 a {
   text-decoration: none;
+}
+
+@layer base {
+  /* Thin */
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: normal;
+    font-weight: 100;
+    src: url("/Tartuffo/Tartuffo_Trial-Thin.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: italic;
+    font-weight: 100;
+    src: url("/Tartuffo/Tartuffo_Trial-ThinItalic.otf") format("opentype");
+  }
+
+  /* Light */
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: normal;
+    font-weight: 300;
+    src: url("/Tartuffo/Tartuffo_Trial-Light.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: italic;
+    font-weight: 300;
+    src: url("/Tartuffo/Tartuffo_Trial-Light.otf") format("opentype");
+  }
+
+  /* Regular */
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/Tartuffo/Tartuffo_Trial-Regular.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: italic;
+    font-weight: 400;
+    src: url("/Tartuffo/Tartuffo_Trial-RegularItalic.otf") format("opentype");
+  }
+
+  /* Medium */
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/Tartuffo/Tartuffo_Trial-Medium.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: italic;
+    font-weight: 500;
+    src: url("/Tartuffo/Tartuffo_Trial-MediumItalic.otf") format("opentype");
+  }
+
+  /* Bold */
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: normal;
+    font-weight: 500;
+    src: url("/Tartuffo/Tartuffo_Trial-Bold.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Tartuffo";
+    font-style: italic;
+    font-weight: 500;
+    src: url("/Tartuffo/Tartuffo_Trial-BoldItalic.otf") format("opentype");
+  }
 }
