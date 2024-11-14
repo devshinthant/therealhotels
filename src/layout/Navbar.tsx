@@ -178,7 +178,10 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-screen items-center justify-center px-[var(--navbar-mobile-padding-x)] md:px-[var(--navbar-padding-x)]">
+      <nav
+        id="navbar"
+        className="fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-screen -translate-y-full items-center justify-center px-[var(--navbar-mobile-padding-x)] md:px-[var(--navbar-padding-x)]"
+      >
         <div className="flex w-full items-center justify-end md:justify-between">
           <div
             id="nav-title"
