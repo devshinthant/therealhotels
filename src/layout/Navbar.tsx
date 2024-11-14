@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 
 /* Covers */
-import Cover1 from "@/assets/nav-cover-1.avif"
-import Cover2 from "@/assets/nav-cover-2.avif"
-import Cover3 from "@/assets/nav-cover-3.avif"
-import Cover4 from "@/assets/nav-cover-4.avif"
-import Cover5 from "@/assets/nav-cover-5.avif"
+import Cover1 from "@/assets/nav/nav-cover-1.avif"
+import Cover2 from "@/assets/nav/nav-cover-2.avif"
+import Cover3 from "@/assets/nav/nav-cover-3.avif"
+import Cover4 from "@/assets/nav/nav-cover-4.avif"
+import Cover5 from "@/assets/nav/nav-cover-5.avif"
 
 /* Default */
-import DefaultCover from "@/assets/nav-cover.avif"
+import DefaultCover from "@/assets/nav/nav-cover.avif"
 import gsap from "gsap"
 import { cn } from "@/lib/utils"
 import usePrevious from "@/hooks/usePrevious"
