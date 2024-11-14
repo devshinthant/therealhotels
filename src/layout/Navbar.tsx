@@ -14,13 +14,9 @@ export default function Navbar() {
   /* Icon */
   useEffect(() => {
     if (opened) {
-      const entryTimeline = gsap.timeline()
-
+      const entryTimeline = gsap.timeline().clear()
       entryTimeline.to("#nav-section", {
         yPercent: 100,
-        ease: "sine.in",
-        duration: 0.4,
-        delay: 0.15,
         onComplete: () => {
           gsap
             .timeline({ ease: "sine.inOut" })
