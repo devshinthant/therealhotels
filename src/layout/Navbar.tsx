@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react"
-import Cover from "@/assets/nav-cover.avif"
+
+/* Covers */
+import Cover1 from "@/assets/nav-cover-1.avif"
+import Cover2 from "@/assets/nav-cover-2.avif"
+import Cover3 from "@/assets/nav-cover-3.avif"
+import Cover4 from "@/assets/nav-cover-4.avif"
+import Cover5 from "@/assets/nav-cover-5.avif"
+
+/* Default */
+import DefaultCover from "@/assets/nav-cover.avif"
 import gsap from "gsap"
 import { cn } from "@/lib/utils"
 import usePrevious from "@/hooks/usePrevious"
@@ -11,7 +20,7 @@ export default function Navbar() {
   const [opened, setOpened] = useState(false)
   const previousOpened = usePrevious(opened)
 
-  /* Icon */
+  /* Nav */
   useEffect(() => {
     if (opened) {
       const entryTimeline = gsap.timeline().clear()
@@ -20,12 +29,16 @@ export default function Navbar() {
         onComplete: () => {
           gsap
             .timeline({ ease: "sine.inOut" })
-            .to("#nav-section-description", { yPercent: -100, stagger: 0.05 })
+            .to(
+              "#nav-section-description",
+              { yPercent: -100, stagger: 0.05 },
+              "-=0.1"
+            )
             .to("#nav-section-link", { yPercent: -100, stagger: 0.05 }, "<")
             .to(
               "#nav-section-image-wrapper",
               {
-                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                clipPath: "inset(0% 0% 0% 0%)",
                 duration: 0.4,
                 ease: "power4.inOut",
               },
@@ -42,7 +55,7 @@ export default function Navbar() {
         .to(
           "#nav-section-image-wrapper",
           {
-            clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+            clipPath: "inset(0% 100% 0% 0%)",
             duration: 0.4,
             ease: "power4.inOut",
           },
@@ -66,9 +79,6 @@ export default function Navbar() {
     })
   }, [opened, previousOpened])
 
-  /* Icon */
-
-  /* Nav */
   useEffect(() => {
     if (opened) {
       gsap.to("#middle-bar", {
@@ -121,6 +131,51 @@ export default function Navbar() {
   }, [opened, previousOpened])
   /* Nav */
 
+  /* Content Section */
+  useEffect(() => {
+    const descriptions = document.querySelectorAll("#nav-section-description")
+
+    descriptions.forEach((description) => {
+      description.addEventListener("mouseenter", () => {
+        const coverIndex = description.getAttribute("data-cover") || 0
+
+        gsap.set(`#nav-section-image-${coverIndex}`, {
+          clipPath: "inset(0% 100% 0% 0%)",
+        })
+
+        gsap.to(`#nav-section-image-${coverIndex}`, {
+          clipPath: "inset(0% 0% 0% 0%)",
+          visibility: "visible",
+          zIndex: 10,
+        })
+
+        gsap.to(descriptions, {
+          opacity: 0.2,
+          duration: 0.3,
+          overwrite: "auto",
+        })
+        gsap.to(description, {
+          opacity: 1,
+          duration: 0.3,
+        })
+      })
+
+      description.addEventListener("mouseleave", () => {
+        gsap.to(descriptions, {
+          opacity: 1,
+          duration: 0.3,
+        })
+
+        const coverIndex = description.getAttribute("data-cover") || 0
+
+        gsap.to(`#nav-section-image-${coverIndex}`, {
+          clipPath: "inset(0% 0% 0% 100%)",
+        })
+      })
+    })
+  }, [])
+  /* Content Section */
+
   return (
     <>
       <nav className="fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-full items-center justify-center px-[var(--navbar-padding-x)]">
@@ -154,7 +209,7 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-      <div
+      <section
         id="nav-section"
         className={cn(
           "fixed left-0 top-0 z-40 h-screen w-full -translate-y-full bg-[#F3F1F1] px-[var(--navbar-padding-x)] pb-12 pt-[calc(var(--navbar-height)+70px)]"
@@ -163,31 +218,51 @@ export default function Navbar() {
         <div className="relative flex h-full w-full items-start justify-between">
           <div
             id="nav-section-title"
-            className="flex w-[40%] flex-col items-start font-heading text-[55px] leading-[1.4]"
+            className="flex w-[40%] flex-col items-start font-heading text-[55px] leading-[1.4] transition-all"
           >
             <div className="overflow-hidden">
-              <div id="nav-section-description" className="translate-y-full">
+              <div
+                id="nav-section-description"
+                data-cover="1"
+                className="translate-y-full cursor-pointer"
+              >
                 Explore the map
               </div>
             </div>
             <div className="overflow-hidden">
-              <div id="nav-section-description" className="translate-y-full">
+              <div
+                id="nav-section-description"
+                data-cover="2"
+                className="translate-y-full cursor-pointer"
+              >
                 Browse by series
               </div>
             </div>
 
             <div className="overflow-hidden">
-              <div id="nav-section-description" className="translate-y-full">
+              <div
+                id="nav-section-description"
+                data-cover="3"
+                className="translate-y-full cursor-pointer"
+              >
                 Housewives in the wild
               </div>
             </div>
             <div className="overflow-hidden">
-              <div id="nav-section-description" className="translate-y-full">
+              <div
+                id="nav-section-description"
+                data-cover="4"
+                className="translate-y-full cursor-pointer"
+              >
                 About us
               </div>
             </div>
             <div className="overflow-hidden">
-              <div id="nav-section-description" className="translate-y-full">
+              <div
+                id="nav-section-description"
+                data-cover="5"
+                className="translate-y-full cursor-pointer"
+              >
                 Get in touch
               </div>
             </div>
@@ -212,23 +287,91 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <div
-                id="nav-section-image-wrapper"
-                style={{
-                  clipPath: "polygon(0% 0%,0% 0%, 0% 100%,0% 100%)",
-                }}
-                className="h-[270px] w-[220px] overflow-hidden"
-              >
-                <img
-                  id="nav-section-image"
-                  className="h-full w-full scale-[1.2] overflow-hidden object-cover"
-                  src={Cover}
-                />
+
+              <div className="image-section relative h-[270px] w-[220px]">
+                <div
+                  id="nav-section-image-wrapper"
+                  style={{
+                    clipPath: "inset(0% 100% 0% 0%)",
+                  }}
+                  className="absolute h-full w-full overflow-hidden"
+                >
+                  <img
+                    id="nav-section-image"
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={DefaultCover}
+                  />
+                </div>
+
+                <div
+                  id="nav-section-image-1"
+                  style={{
+                    clipPath: "inset(0% 0% 0% 100%)",
+                  }}
+                  className="invisible absolute z-[1] h-full w-full overflow-hidden"
+                >
+                  <img
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={Cover1}
+                  />
+                </div>
+
+                <div
+                  id="nav-section-image-2"
+                  style={{
+                    clipPath: "inset(0% 0% 0% 100%)",
+                  }}
+                  className="invisible absolute z-[1] h-full w-full overflow-hidden"
+                >
+                  <img
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={Cover2}
+                  />
+                </div>
+
+                <div
+                  id="nav-section-image-3"
+                  style={{
+                    clipPath: "inset(0% 0% 0% 100%)",
+                  }}
+                  className="invisible absolute z-[1] h-full w-full overflow-hidden"
+                >
+                  <img
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={Cover3}
+                  />
+                </div>
+
+                <div
+                  id="nav-section-image-4"
+                  style={{
+                    clipPath: "inset(0% 0% 0% 100%)",
+                  }}
+                  className="invisible absolute z-[1] h-full w-full overflow-hidden"
+                >
+                  <img
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={Cover4}
+                  />
+                </div>
+
+                <div
+                  id="nav-section-image-5"
+                  style={{
+                    clipPath: "inset(0% 0% 0% 100%)",
+                  }}
+                  className="invisible absolute z-[1] h-full w-full overflow-hidden"
+                >
+                  <img
+                    className="h-full w-full scale-[1.2] overflow-hidden object-cover"
+                    src={Cover5}
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }
