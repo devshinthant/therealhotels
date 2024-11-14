@@ -13,6 +13,8 @@
   /* Css Vars */
   --navbar-height: 78px;
   --navbar-padding-x: 48px;
+
+  --navbar-mobile-padding-x: 20px;
 }
 
 a {

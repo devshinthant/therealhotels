@@ -178,17 +178,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-full items-center justify-center px-[var(--navbar-padding-x)]">
-        <div className="flex w-full items-center justify-between">
+      <nav className="fixed left-0 top-0 z-50 flex h-[var(--navbar-height)] w-screen items-center justify-center px-[var(--navbar-mobile-padding-x)] md:px-[var(--navbar-padding-x)]">
+        <div className="flex w-full items-center justify-end md:justify-between">
           <div
             id="nav-title"
-            className="w-[170px] border-l-[0.11rem] border-white px-3 text-[10px] font-medium leading-[1.5] text-white"
+            className="hidden w-[170px] border-l-[0.11rem] border-white px-3 text-[10px] font-medium leading-[1.5] text-white md:block"
           >
             {navTitleOne}
           </div>
           <button
             onClick={() => setOpened((prev) => !prev)}
-            className="w-12"
+            className="w-9 md:w-12"
             type="button"
             aria-label="menu-button"
           >
@@ -212,13 +212,13 @@ export default function Navbar() {
       <section
         id="nav-section"
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen w-full -translate-y-full bg-[#F3F1F1] px-[var(--navbar-padding-x)] pb-12 pt-[calc(var(--navbar-height)+70px)]"
+          "fixed left-0 top-0 z-40 h-screen w-screen -translate-y-full bg-[#F3F1F1] px-[var(--navbar-mobile-padding-x)] pb-12 pt-[calc(var(--navbar-height)+70px)] md:px-[var(--navbar-padding-x)]"
         )}
       >
         <div className="relative flex h-full w-full items-start justify-between">
           <div
             id="nav-section-title"
-            className="flex w-[40%] flex-col items-start font-heading text-[55px] leading-[1.4] transition-all"
+            className="flex w-[70%] flex-col items-start font-heading text-[2rem] leading-[1.4] transition-all md:w-[40%] md:text-[55px]"
           >
             <div className="overflow-hidden">
               <div
@@ -288,7 +288,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="image-section relative h-[270px] w-[220px]">
+              <div className="image-section relative h-[130px] w-[100px] md:h-[270px] md:w-[220px]">
                 <div
                   id="nav-section-image-wrapper"
                   style={{
