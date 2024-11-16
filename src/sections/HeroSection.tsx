@@ -4,6 +4,7 @@ import HeroImage2 from "@/assets/hero/hero-img-2.avif"
 import HeroImage3 from "@/assets/hero/hero-img-3.avif"
 import HeroImage4 from "@/assets/hero/hero-img-4.avif"
 import gsap from "gsap"
+import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import SplitType from "split-type"
 
 export default function HeroSection() {
@@ -73,6 +74,24 @@ export default function HeroSection() {
     })
   }, [])
 
+  /* Gif Scroll */
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.to(".main-img", {
+      scrollTrigger: {
+        trigger: "#hero-section",
+        start: "50% bottom",
+        end: "bottom bottom",
+        scrub: true,
+      },
+
+      width: "100svw",
+      height: "100svh",
+      y: "85svh",
+      x: "11%",
+    })
+  }, [])
+
   return (
     <section id="hero-section" className="h-[200svh]">
       <div className="h-screen">
@@ -102,7 +121,7 @@ export default function HeroSection() {
           </div>
           <div
             id="hero-title"
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 whitespace-nowrap font-heading text-[13.5rem] leading-[1] text-white"
+            className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap font-heading text-[13.5rem] leading-[1] text-white"
           >
             The Real Hotels
           </div>
@@ -175,8 +194,9 @@ export default function HeroSection() {
             id="hero-img"
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
+              inset: "15% 11% auto auto",
             }}
-            className="absolute right-[15%] top-[18%] h-[115px] w-[190px]"
+            className="main-img absolute z-[1] h-[115px] w-[190px]"
           >
             <video
               autoPlay
@@ -189,7 +209,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="h-screen text-white">Image Section</div>
+      <div className="h-screen w-full" />
     </section>
   )
 }
