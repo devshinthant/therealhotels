@@ -92,6 +92,40 @@ export default function HeroSection() {
     })
   }, [])
 
+  /* Content Scroll */
+  useEffect(() => {
+    gsap.to("#image-text", {
+      scrollTrigger: {
+        trigger: "#hero-section",
+        start: "80% bottom",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      opacity: 1,
+      yPercent: -60,
+    })
+
+    gsap.to("#image-bar", {
+      scrollTrigger: {
+        trigger: "#hero-section",
+        start: "90% bottom",
+        end: "bottom bottom",
+        scrub: true,
+      },
+      opacity: 1,
+    })
+
+    gsap.to("#image-btn", {
+      scrollTrigger: {
+        trigger: "#hero-section",
+        start: "bottom bottom",
+      },
+      ease: "none",
+      opacity: 1,
+      yPercent: -60,
+    })
+  }, [])
+
   return (
     <section id="hero-section" className="h-[200svh]">
       <div className="h-screen">
@@ -196,7 +230,7 @@ export default function HeroSection() {
               clipPath: "inset(0% 100% 0% 0%)",
               inset: "15% 11% auto auto",
             }}
-            className="main-img absolute z-[1] h-[115px] w-[190px]"
+            className="main-img absolute z-[1] h-[115px] w-[190px] will-change-transform"
           >
             <video
               autoPlay
@@ -209,7 +243,48 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div className="h-screen w-full" />
+      <div className="relative z-20 flex h-screen w-full items-end justify-center pb-16">
+        <div className="flex min-h-[50svh] flex-col items-center gap-[2.5rem]">
+          <div className="overflow-hidden">
+            <div
+              id="image-text"
+              className="max-w-[44ch] translate-y-[60%] text-center text-[0.75rem] font-medium uppercase text-white opacity-0"
+            >
+              Our collections span the globe, offering you the chance to stay in
+              the luxurious, beautiful, and bizarre accommodations you see on
+              The Real Housewives. Get the gang together in the family van and
+              prepare to squabble over who gets their own room.
+            </div>
+          </div>
+          <div id="image-bar" className="w-[0.5px] flex-1 bg-white opacity-0" />
+          <div className="overflow-hidden">
+            <button
+              id="image-btn"
+              className="flex h-[2.5rem] translate-y-[60%] items-center gap-1 rounded-full bg-white px-3 text-[0.75rem] opacity-0 shadow-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="scale-75"
+              >
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                <path d="M3.6 9h16.8" />
+                <path d="M3.6 15h16.8" />
+                <path d="M11.5 3a17 17 0 0 0 0 18" />
+                <path d="M12.5 3a17 17 0 0 1 0 18" />
+              </svg>
+              <p className="font-medium tracking-wide">EXPLORE THE MAP</p>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

@@ -11,7 +11,10 @@ function App() {
         <Navbar />
         <HeroSection />
 
-        <div className="relative z-20 h-screen w-full bg-red-400">
+        <div
+          id="texts-section"
+          className="relative z-20 h-screen w-full bg-red-400"
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
           reiciendis laborum molestias ipsa nesciunt dolore at accusamus velit
           nisi incidunt eos eius sint aliquam impedit animi est magnam numquam
