@@ -11,6 +11,8 @@ export default function HeroSection() {
   /* Mouse Hover Animation */
   useEffect(() => {
     function parallax(e: MouseEvent) {
+      if (window.scrollY !== 0) return
+
       const IMAGES = Array.from(document.querySelectorAll("#hero-img"))
 
       if (!IMAGES.length) return
