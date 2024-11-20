@@ -139,11 +139,12 @@ export default function Navbar() {
       description.addEventListener("mouseenter", () => {
         const coverIndex = description.getAttribute("data-cover") || 0
 
-        gsap.set(`#nav-section-image-${coverIndex}`, {
+        const tl = gsap.timeline()
+        tl.set(`#nav-section-image-${coverIndex}`, {
           clipPath: "inset(0% 100% 0% 0%)",
         })
 
-        gsap.to(`#nav-section-image-${coverIndex}`, {
+        tl.to(`#nav-section-image-${coverIndex}`, {
           clipPath: "inset(0% 0% 0% 0%)",
           visibility: "visible",
           zIndex: 10,

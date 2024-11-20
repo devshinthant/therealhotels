@@ -84,7 +84,6 @@ export default function HeroSection() {
         end: "bottom bottom",
         scrub: true,
       },
-
       width: "100svw",
       height: "100svh",
       y: "85svh",
@@ -127,7 +126,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section id="hero-section" className="h-[200svh]">
+    <section id="hero-section" className="relative z-10 h-[200vh]">
       <div className="h-screen">
         <div className="relative h-full">
           <div

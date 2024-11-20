@@ -16,8 +16,8 @@ export default function useMountLenis() {
 
     // Synchronize Lenis scrolling with GSAP's ScrollTrigger plugin
     lenis.on("scroll", ScrollTrigger.update)
+
     gsap.registerPlugin(TextPlugin)
-    gsap.registerPlugin(ScrollTrigger)
 
     // Add Lenis's requestAnimationFrame (raf) method to GSAP's ticker
     // This ensures Lenis's smooth scroll animation updates on each GSAP tick
@@ -27,5 +27,9 @@ export default function useMountLenis() {
 
     // Disable lag smoothing in GSAP to prevent any delay in scroll animations
     gsap.ticker.lagSmoothing(0)
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
   }, [])
 }

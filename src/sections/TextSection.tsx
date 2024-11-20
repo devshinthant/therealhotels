@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import gsap from "gsap"
 import SplitType, { TargetElement } from "split-type"
+import { cn } from "@/lib/utils"
 
 export default function TextSection() {
   /* Text Hover  */
@@ -16,6 +17,8 @@ export default function TextSection() {
 
       const target = wrapper.querySelector(".textStyle")
       const sticker = wrapper.querySelector("#sticker")
+
+      const id = wrapper.getAttribute("data-id")
 
       if (!target || !sticker) return
 
@@ -46,6 +49,17 @@ export default function TextSection() {
         visibility: "visible",
         duration: 0.2,
       })
+
+      const tl2 = gsap.timeline()
+      tl2.set([`#left-img-${id}`, `#right-img-${id}`], {
+        visibility: "visible",
+        clipPath: "inset(0% 100% 0% 0%)",
+      })
+
+      tl2.to([`#left-img-${id}`, `#right-img-${id}`], {
+        visibility: "visible",
+        clipPath: "inset(0% 0% 0% 0%)",
+      })
     }
 
     const handleMouseLeave = (event: MouseEvent) => {
@@ -53,6 +67,7 @@ export default function TextSection() {
       const wrapper = (event.target as HTMLElement).closest(".textStyleWrapper")
       if (!wrapper) return
 
+      const id = wrapper.getAttribute("data-id")
       const sticker = wrapper.querySelector("#sticker")
 
       if (!sticker) return
@@ -61,6 +76,11 @@ export default function TextSection() {
         opacity: 1,
         duration: 0.3,
         overwrite: "auto",
+      })
+
+      gsap.to([`#left-img-${id}`, `#right-img-${id}`], {
+        visibility: "visible",
+        clipPath: "inset(0% 0% 0% 100%)",
       })
 
       const tl = gsap.timeline()
@@ -134,7 +154,7 @@ export default function TextSection() {
   return (
     <section
       id="texts-section"
-      className="relative z-20 flex w-full flex-col gap-32 py-36"
+      className="relative z-10 flex w-full flex-col gap-32 py-36"
     >
       <div
         id="texts-title-section"
@@ -153,162 +173,108 @@ export default function TextSection() {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <div className="textStyleWrapper">
-          <div className="textStyle">Orange County</div>
-          <div
-            id="sticker"
-            className="invisible absolute right-[8%] top-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be23bb028842e774ed5158_OC-Sticker.svg"
-            />
+        {data.map((text) => (
+          <div key={text.id} data-id={text.id} className="textStyleWrapper">
+            <div className="textStyle">{text.title}</div>
+            <div
+              id="sticker"
+              className={cn("textSticker", text.stickerPosition)}
+            >
+              <img
+                className="h-full w-full object-cover"
+                src={text.stickerImg}
+              />
+            </div>
           </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">New York</div>
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[15%] left-[8%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="	https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be23e70dfd29dbb7b0e94c_NY-Sticker.svg"
-            />
-          </div>
-        </div>
-        <div className="textStyleWrapper">
-          <div className="textStyle">Atlanta</div>
-
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[15%] right-[8%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2402918aa9d1a669b441_AT-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">New Jersey</div>
-          <div
-            id="sticker"
-            className="invisible absolute left-[30%] top-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2419eb141f7c8c583680_NJ-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">D.C.</div>
-          <div
-            id="sticker"
-            className="invisible absolute right-[20%] top-[10%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24342b671eb3876df0c4_DA-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Beverly Hills</div>
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[10%] left-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be246edd9f36fde22ffe33_BH-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Miami</div>
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[10%] right-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2483b52758c979bbf94a_MI-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Potomac</div>
-          <div
-            id="sticker"
-            className="invisible absolute left-[28%] top-[10%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24975751a6e26f85a5cb_PO-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Dallas</div>
-          <div
-            id="sticker"
-            className="invisible absolute right-[20%] top-[10%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24b52413894dd238a543_SL-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Salt Lake City</div>
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[10%] left-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24cd06925c3aa28e779c_DU-Sticker.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Dubai</div>
-          <div
-            id="sticker"
-            className="invisible absolute bottom-[10%] right-[15%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be250f5a91f448c142c08e_MI-Sticker-3.svg"
-            />
-          </div>
-        </div>
-
-        <div className="textStyleWrapper">
-          <div className="textStyle">Ultimate Girls Trip</div>
-          <div
-            id="sticker"
-            className="invisible absolute left-[28%] top-[10%] w-[3rem] rotate-[-8deg] scale-0"
-          >
-            <img
-              className="h-full w-full object-cover"
-              src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be253006925c3aa28ed3d6_BH-Sticker-1.svg"
-            />
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   )
 }
+
+const data = [
+  {
+    id: 1,
+    title: "Orange County",
+    stickerPosition: "right-[8%] top-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be23bb028842e774ed5158_OC-Sticker.svg",
+  },
+  {
+    id: 2,
+    title: "New York",
+    stickerPosition: "bottom-[15%] left-[8%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be23e70dfd29dbb7b0e94c_NY-Sticker.svg",
+  },
+  {
+    id: 3,
+    title: "Atlanta",
+    stickerPosition: "bottom-[15%] right-[8%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2402918aa9d1a669b441_AT-Sticker.svg",
+  },
+  {
+    id: 4,
+    title: "New Jersey",
+    stickerPosition: "left-[30%] top-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2419eb141f7c8c583680_NJ-Sticker.svg",
+  },
+  {
+    id: 5,
+    title: "D.C.",
+    stickerPosition: "right-[20%] top-[10%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24342b671eb3876df0c4_DA-Sticker.svg",
+  },
+  {
+    id: 6,
+    title: "Beverly Hills",
+    stickerPosition: "bottom-[10%] left-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be246edd9f36fde22ffe33_BH-Sticker.svg",
+  },
+  {
+    id: 7,
+    title: "Miami",
+    stickerPosition: "bottom-[10%] right-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be2483b52758c979bbf94a_MI-Sticker.svg",
+  },
+  {
+    id: 8,
+    title: "Potomac",
+    stickerPosition: "left-[28%] top-[10%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24975751a6e26f85a5cb_PO-Sticker.svg",
+  },
+  {
+    id: 9,
+    title: "Dallas",
+    stickerPosition: "right-[20%] top-[10%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24b52413894dd238a543_SL-Sticker.svg",
+  },
+  {
+    id: 10,
+    title: "Salt Lake City",
+    stickerPosition: "bottom-[10%] left-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be24cd06925c3aa28e779c_DU-Sticker.svg",
+  },
+  {
+    id: 11,
+    title: "Dubai",
+    stickerPosition: "bottom-[10%] right-[15%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be250f5a91f448c142c08e_MI-Sticker-3.svg",
+  },
+  {
+    id: 12,
+    title: "Ultimate Girls Trip",
+    stickerPosition: "left-[28%] top-[10%]",
+    stickerImg:
+      "https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/66be253006925c3aa28ed3d6_BH-Sticker-1.svg",
+  },
+]
