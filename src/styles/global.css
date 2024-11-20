@@ -97,3 +97,17 @@ a {
     src: url("/Tartuffo/Tartuffo_Trial-BoldItalic.otf") format("opentype");
   }
 }
+
+@layer components {
+  .textStyle {
+    @apply cursor-pointer font-heading text-[8rem] leading-[1em] tracking-[-0.03em] text-white;
+    transition-duration: 0.12s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: opacity;
+  }
+
+  .textStyleWrapper {
+    @apply relative overflow-hidden py-[1rem];
+  }
+}
