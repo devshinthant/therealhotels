@@ -7,7 +7,7 @@ export default function TextImageSection() {
       scrollTrigger: {
         trigger: ".pinned",
         start: "top top",
-        endTrigger: "#space-section",
+        endTrigger: "#itw-section",
         end: "bottom top",
         pin: true,
         pinSpacing: false,
