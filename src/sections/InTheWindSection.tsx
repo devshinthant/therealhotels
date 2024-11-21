@@ -60,7 +60,7 @@ export default function InTheWindSection() {
       className="relative z-10 h-screen w-screen bg-black"
     >
       <div className="flex h-full w-full items-center justify-center">
-        <div className="flex flex-col items-center gap-5">
+        <div className="flex flex-col items-center gap-10 lg:gap-5">
           <div
             style={
               {
@@ -72,7 +72,7 @@ export default function InTheWindSection() {
           >
             In the wild
           </div>
-          <div className="text-center text-[.75rem] uppercase leading-[1.4em] tracking-[0.1em] text-white">
+          <div className="w-[70%] text-center text-[.75rem] uppercase leading-[1.4em] tracking-[0.1em] text-white lg:w-full">
             <div className="overflow-hidden">
               <p id="itw-description" className="translate-y-full">
                 Are you relaxing on vacation and caught sight of a
@@ -145,13 +145,13 @@ export default function InTheWindSection() {
       {/* Images */}
       <div
         id="itw-img-wrapper"
-        className="absolute left-[34%] top-[2%]"
+        className="absolute left-[34%] top-[15%] lg:top-[2%]"
         style={{
           clipPath: "inset(0% 100% 0% 0%)",
         }}
       >
         <img
-          className="h-[15vh] w-[7vw]"
+          className="h-[9vh] w-[15vw] lg:h-[15vh] lg:w-[7vw]"
           src="https://cdn.prod.website-files.com/66bdbd95953ed41b630aa4ba/66c658c0fc8c1bc4501bcb52_sunset.avif"
         />
       </div>
@@ -161,10 +161,10 @@ export default function InTheWindSection() {
         style={{
           clipPath: "inset(0% 100% 0% 0%)",
         }}
-        className="absolute right-[22%] top-[17%]"
+        className="absolute right-[20%] top-[25%] lg:right-[22%] lg:top-[17%]"
       >
         <img
-          className="h-[10vh] w-[8vw]"
+          className="h-[6vh] w-[18vw] lg:h-[10vh] lg:w-[8vw]"
           src="https://cdn.prod.website-files.com/66bdbd95953ed41b630aa4ba/66c6587ddf0ae8fd5c7d663f_12_Medley-Watson.avif"
         />
       </div>
@@ -174,10 +174,10 @@ export default function InTheWindSection() {
         style={{
           clipPath: "inset(0% 100% 0% 0%)",
         }}
-        className="absolute bottom-[40%] left-[18%]"
+        className="absolute bottom-[58%] left-[10%] lg:bottom-[40%] lg:left-[18%]"
       >
         <img
-          className="h-[11vh] w-[9vw]"
+          className="h-[6vh] w-[17vw] lg:h-[11vh] lg:w-[9vw]"
           src="https://cdn.prod.website-files.com/66bdbd95953ed41b630aa4ba/66c658b3053670fd133cf579_RHOC_ITW_Surf%20%26%20Sand%20Resort%20Laguna%20Beach_-topaz-upscale-2500w.avif"
         />
       </div>
