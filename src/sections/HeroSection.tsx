@@ -79,17 +79,37 @@ export default function HeroSection() {
   /* Gif Scroll */
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    gsap.to(".main-img", {
-      scrollTrigger: {
-        trigger: "#hero-section",
-        start: "50% bottom",
-        end: "bottom bottom",
-        scrub: true,
-      },
-      width: "100svw",
-      height: "100svh",
-      y: "85svh",
-      x: "11%",
+
+    const mm = gsap.matchMedia()
+
+    mm.add("(min-width: 800px)", () => {
+      gsap.to(".main-img", {
+        scrollTrigger: {
+          trigger: "#hero-section",
+          start: "50% bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+        width: "100svw",
+        height: "100svh",
+        y: "85svh",
+        x: "11%",
+      })
+    })
+
+    mm.add("(max-width: 799px)", () => {
+      gsap.to(".main-img", {
+        scrollTrigger: {
+          trigger: "#hero-section",
+          start: "50% bottom",
+          end: "bottom bottom",
+          scrub: true,
+        },
+        width: "100svw",
+        height: "100svh",
+        y: "140svh",
+        x: "36%",
+      })
     })
   }, [])
 
@@ -133,14 +153,14 @@ export default function HeroSection() {
         <div className="relative h-full">
           <div
             id="content"
-            className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 opacity-0"
+            className="absolute left-1/2 top-[12%] z-20 w-[75%] -translate-x-1/2 opacity-0 lg:top-1/2 lg:-translate-y-1/2"
           >
             <div className="flex flex-col gap-5">
               <div className="flex flex-col items-center gap-2">
-                <div className="font-heading text-[2rem] leading-[1] text-white">
+                <div className="font-heading text-2xl leading-[1] text-white lg:text-[2rem]">
                   Money can’t buy you class,
                 </div>
-                <div className="font-heading text-[2rem] leading-[1] text-white">
+                <div className="font-heading text-2xl leading-[1] text-white lg:text-[2rem]">
                   but it can buy you a vacation.
                 </div>
               </div>
@@ -156,7 +176,7 @@ export default function HeroSection() {
           </div>
           <div
             id="hero-title"
-            className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap font-heading text-[13.5rem] leading-[1] text-white"
+            className="absolute bottom-0 left-1/2 z-10 w-[72%] -translate-x-1/2 pb-5 text-center font-heading text-[5rem] leading-[1] text-white md:w-full md:pb-0 lg:whitespace-nowrap lg:text-[13.5rem]"
           >
             The Real Hotels
           </div>
@@ -165,7 +185,7 @@ export default function HeroSection() {
           <div
             data-value={13}
             id="hero-img"
-            className="absolute left-[32%] top-[10%]"
+            className="absolute left-[32%] top-[10%] hidden lg:block"
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
@@ -179,7 +199,7 @@ export default function HeroSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="absolute left-[8%] top-[30%] z-[1]"
+            className="absolute left-[8%] top-[30%] z-[1] hidden lg:block"
           >
             <img src={HeroImage2} className="h-[160px] w-[130px]" />
           </div>
@@ -190,7 +210,7 @@ export default function HeroSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="absolute left-[12%] top-[45%] z-0 h-[98px] w-[160px]"
+            className="absolute left-[12%] top-[45%] z-0 hidden h-[98px] w-[160px] lg:block"
           >
             <video
               autoPlay
@@ -208,9 +228,12 @@ export default function HeroSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="absolute bottom-[40%] right-[5%]"
+            className="absolute bottom-[60%] right-[68%] lg:bottom-[40%] lg:right-[5%]"
           >
-            <img src={HeroImage3} className="h-[90px] w-[130px]" />
+            <img
+              src={HeroImage3}
+              className="w-[80px] lg:h-[90px] lg:w-[130px]"
+            />
           </div>
 
           <div
@@ -219,9 +242,12 @@ export default function HeroSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="absolute bottom-[25%] right-[25%]"
+            className="absolute bottom-[45%] right-[15%] lg:bottom-[25%] lg:right-[25%]"
           >
-            <img src={HeroImage4} className="h-[140px] w-[114px]" />
+            <img
+              src={HeroImage4}
+              className="w-[84px] lg:h-[140px] lg:w-[114px]"
+            />
           </div>
 
           <div
@@ -229,9 +255,8 @@ export default function HeroSection() {
             id="hero-img"
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
-              inset: "15% 11% auto auto",
             }}
-            className="main-img absolute z-[1] h-[115px] w-[190px] will-change-transform"
+            className="main-img absolute bottom-[40%] right-[36%] z-[1] h-[90px] w-[126px] will-change-transform lg:right-[11%] lg:top-[15%] lg:h-[115px] lg:w-[190px]"
           >
             <video
               autoPlay
