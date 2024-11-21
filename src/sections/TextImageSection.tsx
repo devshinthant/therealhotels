@@ -25,7 +25,7 @@ export default function TextImageSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[24vh] w-[11vw] object-cover"
+            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[14vh] w-[20vw] object-cover lg:h-[24vh] lg:w-[11vw]"
             src={image}
           />
         ))}
@@ -39,7 +39,7 @@ export default function TextImageSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[10vh] w-[8vw] object-cover"
+            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[6vh] w-[20vw] object-cover lg:h-[10vh] lg:w-[8vw]"
             src={image}
           />
         ))}
@@ -53,7 +53,7 @@ export default function TextImageSection() {
             style={{
               clipPath: "inset(0% 100% 0% 0%)",
             }}
-            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[14vh] w-[12vw] object-cover"
+            className="invisible col-start-1 col-end-2 row-start-1 row-end-2 h-[8vh] w-[25vw] object-cover lg:h-[14vh] lg:w-[12vw]"
             src={image}
           />
         ))}

@@ -100,7 +100,7 @@ a {
 
 @layer components {
   .textStyle {
-    @apply pointer-events-none font-heading text-[8rem] leading-[1em] tracking-[-0.03em] text-white;
+    @apply pointer-events-none font-heading text-4xl leading-[1em] tracking-[-0.03em] text-white lg:text-[8rem];
     transition-duration: 0.12s;
     transition-timing-function: ease;
     transition-delay: 0s;
@@ -112,6 +112,6 @@ a {
   }
 
   .textSticker {
-    @apply invisible absolute w-[3rem] rotate-[-8deg] scale-0;
+    @apply invisible absolute w-[1.4rem] rotate-[-8deg] scale-0 lg:w-[3rem];
   }
 }
