@@ -1,33 +1,41 @@
-import { MouseEventHandler, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import gsap from "gsap"
 
 export default function InTheWindSection() {
-  const clipRef = useRef(null)
+  const clipRef = useRef<HTMLDivElement>(null)
+  const gsapContext = useRef<gsap.Context | null>(null)
 
-  const handleMouseEnter: MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!event.currentTarget) return
-    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
+  const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    if (!clipRef.current) return
+
+    const rect = event.currentTarget.getBoundingClientRect()
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top) / rect.height) * 100
 
-    gsap.to(clipRef.current, {
-      clipPath: `circle(141.4% at ${x}% ${y}%)`,
-      duration: 0.4,
-      ease: "sine",
+    gsapContext.current?.kill() // Kill any ongoing animations
+    gsapContext.current = gsap.context(() => {
+      gsap.to(clipRef.current, {
+        clipPath: `circle(141.4% at ${x}% ${y}%)`,
+        duration: 0.4,
+        ease: "sine.out",
+      })
     })
   }
 
-  const handleMouseLeave: MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!event.currentTarget) return
-    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
+  const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    if (!clipRef.current) return
+
+    const rect = event.currentTarget.getBoundingClientRect()
     const x = ((event.clientX - rect.left) / rect.width) * 100
     const y = ((event.clientY - rect.top) / rect.height) * 100
 
-    gsap.to(clipRef.current, {
-      clipPath: `circle(0% at ${x}% ${y}%)`,
-      duration: 0.3,
-
-      ease: "sine",
+    gsapContext.current?.kill() // Kill any ongoing animations
+    gsapContext.current = gsap.context(() => {
+      gsap.to(clipRef.current, {
+        clipPath: `circle(0% at ${x}% ${y}%)`,
+        duration: 0.3,
+        ease: "sine.in",
+      })
     })
   }
 
