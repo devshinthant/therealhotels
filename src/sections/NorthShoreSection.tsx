@@ -60,7 +60,7 @@ export default function NorthShoreSection() {
 
           <div className="h-[18vh] w-[1px] bg-white" />
 
-          <p className="line-clamp-3 w-full text-center text-[.75rem] leading-[1.4em] tracking-[.1em]">
+          <p className="line-clamp-3 w-full text-center text-[.75rem] leading-[1.4em] tracking-[.1em] lg:w-[28%]">
             ALSO A SNOOZE? NEW TO THE GROUP STACEY. STACEY’S STORYLINE CENTERS
             AROUND LEAVING HER POST AS A QVC PERSONALITY AND GETTING
             SEPARATED...

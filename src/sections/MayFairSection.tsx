@@ -33,7 +33,7 @@ export default function MayFairSection() {
 
           <div className="h-[18vh] w-[1px] bg-white" />
 
-          <p className="line-clamp-3 w-full text-center text-[.75rem] leading-[1.4em] tracking-[.1em]">
+          <p className="line-clamp-3 w-full text-center text-[.75rem] leading-[1.4em] tracking-[.1em] lg:w-[28%]">
             SHANNON ENDS HER BIRTHDAY TRIP BENT OVER AND CRYING, BEGGING FOR
             RELIEF IN THE FORM OF AN EMERGENCY ENEMA DELIVERED BY KATIE (WHO, IT
             MUS...
