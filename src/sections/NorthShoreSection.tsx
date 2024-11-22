@@ -9,7 +9,7 @@ export default function NorthShoreSection() {
         trigger: "#northshore-section",
         start: "top top",
         endTrigger: "#mayfair-section",
-        end: "bottom top",
+        end: "top top",
         pin: true,
         pinSpacing: false,
       },

@@ -1,6 +1,7 @@
 import useMountLenis from "./hooks/useMountLenis"
 import Navbar from "./layout/Navbar"
 import CavalloSection from "./sections/CavalloSection"
+import ContactSection from "./sections/ContactSection"
 import HeroSection from "./sections/HeroSection"
 import InTheWindSection from "./sections/InTheWindSection"
 import MayFairSection from "./sections/MayFairSection"
@@ -21,6 +22,7 @@ function App() {
       <CavalloSection />
       <NorthShoreSection />
       <MayFairSection />
+      <ContactSection />
     </div>
   )
 }

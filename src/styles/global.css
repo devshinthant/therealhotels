@@ -114,4 +114,13 @@ a {
   .textSticker {
     @apply invisible absolute w-[1.4rem] rotate-[-8deg] scale-0 lg:w-[3rem];
   }
+
+  .contactLink {
+    @apply text-center text-[.75rem] uppercase leading-[1.4em] tracking-[0.1em] text-white opacity-60 transition-opacity hover:opacity-100;
+  }
+
+  .contactTitleEntry {
+    opacity: 0;
+    transform: translateY(60%) rotateX(-90deg);
+  }
 }

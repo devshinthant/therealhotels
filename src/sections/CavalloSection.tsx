@@ -8,8 +8,8 @@ export default function CavalloSection() {
       scrollTrigger: {
         trigger: "#cavallo-section",
         start: "top top",
-        endTrigger: "#northshore-section",
-        end: "bottom top",
+        endTrigger: "#mayfair-section",
+        end: "top top",
         pin: true,
         pinSpacing: false,
       },
