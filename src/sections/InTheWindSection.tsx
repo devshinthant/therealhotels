@@ -1,44 +1,8 @@
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
+import Button from "@/components/Button"
 import gsap from "gsap"
 
 export default function InTheWindSection() {
-  const clipRef = useRef<HTMLDivElement>(null)
-  const gsapContext = useRef<gsap.Context | null>(null)
-
-  const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!clipRef.current) return
-
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 100
-    const y = ((event.clientY - rect.top) / rect.height) * 100
-
-    gsapContext.current?.kill() // Kill any ongoing animations
-    gsapContext.current = gsap.context(() => {
-      gsap.to(clipRef.current, {
-        clipPath: `circle(141.4% at ${x}% ${y}%)`,
-        duration: 0.4,
-        ease: "sine.out",
-      })
-    })
-  }
-
-  const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!clipRef.current) return
-
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width) * 100
-    const y = ((event.clientY - rect.top) / rect.height) * 100
-
-    gsapContext.current?.kill() // Kill any ongoing animations
-    gsapContext.current = gsap.context(() => {
-      gsap.to(clipRef.current, {
-        clipPath: `circle(0% at ${x}% ${y}%)`,
-        duration: 0.3,
-        ease: "sine.in",
-      })
-    })
-  }
-
   useEffect(() => {
     gsap.to("#itw-img-wrapper", {
       scrollTrigger: {
@@ -108,45 +72,31 @@ export default function InTheWindSection() {
             </div>
           </div>
 
-          <div
-            className="group relative mt-3 flex flex-col items-center justify-center overflow-hidden rounded-full border transition-all hover:border-white"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+          <Button
+            icon={
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="relative z-[2] scale-[0.6] group-hover:stroke-white"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M8 4h-2l-3 10v2.5" />
+                <path d="M16 4h2l3 10v2.5" />
+                <path d="M10 16l4 0" />
+                <path d="M17.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" />
+                <path d="M6.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" />
+              </svg>
+            }
           >
-            {/* Button Content */}
-            <div className="flex h-[2.5rem] w-full bg-white px-[1rem] leading-[1] text-black">
-              <div className="mx-auto flex items-center justify-center gap-1">
-                <div className="relative z-[2] text-[.75rem] uppercase leading-[1.4em] group-hover:text-white">
-                  Discover the wild ones
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="relative z-[2] order-[-1] scale-[0.6] group-hover:stroke-white"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M8 4h-2l-3 10v2.5" />
-                  <path d="M16 4h2l3 10v2.5" />
-                  <path d="M10 16l4 0" />
-                  <path d="M17.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" />
-                  <path d="M6.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0" />
-                </svg>
-              </div>
-            </div>
-
-            <div
-              ref={clipRef}
-              className="pointer-events-none absolute inset-0 h-[2.5rem] w-full rounded-[100vw] bg-black"
-              style={{ clipPath: "circle(0% at 50% 50%)" }}
-            />
-          </div>
+            Discover the wild ones
+          </Button>
         </div>
       </div>
 
