@@ -36,7 +36,7 @@ export default function CavalloSection() {
         }}
       />
       <img
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full object-cover"
         src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/673bbf83dc74dc87ff290f6f_RHOSLC_S5E8-9_Cavallo%20Ranch_1-topaz-upscale-2000w.avif"
       />
 

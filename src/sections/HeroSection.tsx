@@ -3,6 +3,7 @@ import HeroImage1 from "@/assets/hero/hero-img-1.avif"
 import HeroImage2 from "@/assets/hero/hero-img-2.avif"
 import HeroImage3 from "@/assets/hero/hero-img-3.avif"
 import HeroImage4 from "@/assets/hero/hero-img-4.avif"
+import Button from "@/components/Button"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/dist/ScrollTrigger"
 import SplitType from "split-type"
@@ -41,7 +42,7 @@ export default function HeroSection() {
   useEffect(() => {
     const titleCharacters = new SplitType("#hero-title", {
       types: "chars",
-      charClass: "opacity-0 translate-y-full",
+      charClass: "contactTitleEntry",
     })
 
     const timeline = gsap.timeline()
@@ -55,7 +56,8 @@ export default function HeroSection() {
       titleCharacters.chars,
       {
         opacity: 1,
-        yPercent: -100,
+        rotateX: 0,
+        yPercent: -60,
         stagger: 0.05,
       },
       "-=0.2"
@@ -284,30 +286,30 @@ export default function HeroSection() {
           </div>
           <div id="image-bar" className="w-[0.5px] flex-1 bg-white opacity-0" />
           <div className="overflow-hidden">
-            <button
-              id="image-btn"
-              className="flex h-[2.5rem] translate-y-[60%] items-center gap-1 rounded-full bg-white px-3 text-[0.75rem] opacity-0 shadow-sm"
+            <Button
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="relative z-[2] scale-75 group-hover:stroke-white"
+                >
+                  <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                  <path d="M3.6 9h16.8" />
+                  <path d="M3.6 15h16.8" />
+                  <path d="M11.5 3a17 17 0 0 0 0 18" />
+                  <path d="M12.5 3a17 17 0 0 1 0 18" />
+                </svg>
+              }
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="scale-75"
-              >
-                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
-                <path d="M3.6 9h16.8" />
-                <path d="M3.6 15h16.8" />
-                <path d="M11.5 3a17 17 0 0 0 0 18" />
-                <path d="M12.5 3a17 17 0 0 1 0 18" />
-              </svg>
-              <p className="font-medium tracking-wide">EXPLORE THE MAP</p>
-            </button>
+              EXPLORE THE MAP
+            </Button>
           </div>
         </div>
       </div>

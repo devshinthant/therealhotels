@@ -38,7 +38,7 @@ export default function NorthShoreSection() {
         }}
       />
       <img
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full object-cover"
         src="https://cdn.prod.website-files.com/66be216df5f5c498bc873efb/673bbec0393321ca531d449b_RHOP_S9E4-6_North%20Shore%20Landing%20aka%20Mia%27s%20Manor_1-topaz-upscale-2000w.avif"
       />
 
