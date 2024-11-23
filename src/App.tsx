@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import useMountLenis from "./hooks/useMountLenis"
 import Navbar from "./layout/Navbar"
 import CavalloSection from "./sections/CavalloSection"
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className="h-auto w-screen bg-black">
+      <Analytics />
       <Navbar />
       <HeroSection />
       <TextSection />

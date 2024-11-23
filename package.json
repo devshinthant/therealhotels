@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "clsx": "^2.1.1",
     "gsap": "^3.12.5",
     "lenis": "^1.1.16",
