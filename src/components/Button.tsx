@@ -1,5 +1,6 @@
 import { useRef } from "react"
 import gsap from "gsap"
+import { cn } from "@/lib/utils"
 
 interface Props
   extends Omit<
@@ -9,12 +10,14 @@ interface Props
   children: React.ReactNode
   icon: React.ReactNode
   iconPosition?: "left" | "right"
+  gap?: number
 }
 
 export default function Button({
   children,
   icon,
   iconPosition = "left",
+  gap,
   ...rest
 }: Props) {
   const clipRef = useRef<HTMLDivElement>(null)
@@ -67,8 +70,17 @@ export default function Button({
       {...rest}
     >
       {/* Button Content */}
-      <div className="flex h-[2.5rem] w-full bg-white px-[1rem] leading-[1] text-black">
-        <div className="mx-auto flex items-center justify-center gap-1">
+      <div
+        className={
+          "flex h-[2.5rem] w-full bg-white px-[1rem] leading-[1] text-black"
+        }
+      >
+        <div
+          className={cn(
+            "mx-auto flex items-center justify-center gap-1",
+            `gap-${gap}`
+          )}
+        >
           {iconPosition === "left" && icon}
           <div className="relative z-[2] text-[.75rem] font-medium uppercase leading-[1.4em] group-hover:text-white">
             {children}

@@ -287,6 +287,7 @@ export default function HeroSection() {
           <div id="image-bar" className="w-[0.5px] flex-1 bg-white opacity-0" />
           <div className="overflow-hidden">
             <Button
+              gap={2}
               icon={
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
